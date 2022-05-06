@@ -20,7 +20,8 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(expressSanitizer());
-app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 app.use(express.static('public'));
 app.use(methodOverride('_method'))
 
